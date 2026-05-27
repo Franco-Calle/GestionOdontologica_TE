@@ -47,26 +47,29 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <tr>
                             <td>Medico</td>
                             <td>
-                                <select id="medico" name="medico">
+                                <select id="medico" name="medico" onchange="cargarHoras()">
                                     <option value="-1" selected="selected">---Seleccion de medico---</option>
-                                    <option value="12345">12345 Camilo Robledo</option>
-                                    <option value="67890">67890 Esteban Salgado</option>
+                                    <?php
+                                    While ($fila = $result->fetch_object()) {
+                                        ?>
+                                        <option value="<?php echo $fila->MedIdentificacion ?>">
+                                            <?php echo $fila->MedIdentificacion . "-" . $fila->MedNombres . "" . $fila->MedApellidos ?>
+                                        </option>
+                                        <?php
+                                    }
+                                    ?>
                                 </select>
                             </td>
                         </tr>
                         <tr>
                             <td>Fecha</td>
-                            <td><input type="text" name="fecha" id="fecha"/></td>
+                            <td><input type="text" name="fecha" id="fecha" readonly="readonly" onchange="cargarHoras()"/></td>
                         </tr>
                         <tr>
                             <td>Hora</td>
                             <td>
-                                <select id="hora" name="hora">
+                                <select id="hora" name="hora" onmousedown="seleccionarHora()">
                                     <option value="-1" selected="selected">---Seleccione la hora---</option>
-                                    <option>08:00:00</option>
-                                    <option>08:20:00</option>
-                                    <option>08:40:00</option>
-                                    <option>09:00:00</option>
                                 </select>
                             </td>
                         </tr>
@@ -75,8 +78,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <td>
                                 <select id="consultorio" name="consultorio">
                                     <option value="-1" selected="selected">---Seleccione el consultorio---</option>
-                                    <option value="1">1 Consulta1</option>
-                                    <option value="2">2 Tratamientos2</option>
+                                    <?php
+                                    While($fila2=$result2->fetch_object()){
+                                        ?>
+                                    <option value="<?php echo $fila2->ContNumero?>">
+                                        <?php echo $fila2->ContNumero."-".$fila2->ConNombre?>
+                                    </option>
+                                    <?php
+                                    }
+                                    ?>
                                 </select>
                             </td>
                         </tr>
@@ -106,7 +116,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </tr>
                     <tr>
                         <td>Fecha de Nacimiento</td>
-                        <td><input type="text" name="pacNacimiento" id="pacNacimiento" /></td>
+                        <td><input type="text" name="pacNacimiento" id="pacNacimiento" readonly="readonly"/></td>
                     </tr>
                     <tr>
                         <td>Sexo</td>

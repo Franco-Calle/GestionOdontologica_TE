@@ -34,6 +34,52 @@ function cancelar(){
 }
 
 $(document).ready(function(){
-    $("#fecha").datepicker();
-    $("#pacNacimiento").datepicker();
-})
+    $("#fecha").datepicker({
+        dateFormat: "yy-mm-dd",
+        changeMonth: true,
+        changeYear: true
+    });
+    $("#pacNacimiento").datepicker({
+        dateFormat: "yy-mm-dd",
+        changeMonth: true,
+        changeYear: true
+    });
+});
+
+function cargarHoras() {
+    if ($("#medico").val() == -1 || $("#fecha").val() == "") {
+        $("#hora").html("<option value='-1' selected='selected'>--- Seleccione la hora ---</option>");
+    } else {
+        const queryString = "medico=" + $("#medico").val() + "&fecha=" + $("#fecha").val();
+        const url = "index.php?accion=consultarHora&" + queryString;
+        $("#hora").load(url);
+    }
+}
+
+function seleccionarHora() {
+    if ($("#medico").val() == -1) {
+        alert("Debe seleccionar un médico");
+    }
+    else if ($("#fecha").val() == ""){
+        alert("Debe seleccionar una fecha");    
+    }
+}
+
+function consultarCita(){
+    const url="index.php?accion=consultarCita&consultarDocumento="+$("#consultarDocumento").val();
+    $("#paciente2").load(url);
+}
+
+function cancelarCita(){
+    const url="index.php?accion=cancelarCita&cancelarDocumento="+$("#cancelarDocumento").val();
+    $("#paciente3").load(url);
+}
+
+function confirmarCancelar(numero){
+    if(confirm("Estas seguro que desea cancelar la cita "+numero+ "?")){
+        $.get("index.php",{accion:'confirmarCancelar',numero: numero}, function(mensaje){
+            alert(mensaje);
+            $("#cancelarConsulta").trigger("click");
+            });
+    }
+}

@@ -47,4 +47,43 @@ class Controlador {
             echo "Error al insertar ek paciente, intente de nuevo";
         }
     }
+    public function cargarAsignar() {
+        $gestorCita = new GestorCita();
+        $result=$gestorCita->consultarMedicos();
+        $result2=$gestorCita->consultarConsultorios();
+        require_once "Vista/html/asignar.php";
+    }
+    public function consultarHorasDisponibles($medico,$fecha) {
+        $gestorCita = new GestorCita();
+        $result=$gestorCita->consultarHorasDisponibles($medico,$fecha);
+        require_once "Vista/html/consultarHoras.php";
+    }
+    public function verCita($cita) {
+        $gestorCita = new GestorCita();
+        $result=$gestorCita->consultarCitaPorld($cita);
+        require_once "Vista/html/confirmarCitas.php";
+    }
+    public function confirmarCancelarCita($cita) {
+        $gestorCita = new GestorCita();
+        $registros=$gestorCita->cancelarCita($cita);
+        if($registros > 0){
+            echo "La cita se ha cancelado con exito";
+        }
+        else{
+            echo "Error al cancelar cita, intente de nuevo";
+        }
+    }
+    public function generarReporte($cita) {
+        $gestorCita = new GestorCita();
+        $result=$gestorCita->consultarCitaPorld($cita);
+        ob_start();
+        require_once "Vista/html/reporteCita.php";
+        $content=ob_get_clean();
+        require_once "vendor/autoload.php";
+        $html2pdf = new \Spipu\Html2Pdf\Html2Pdf('P','A4','es');
+        $html2pdf->pdf-> SetDisplayMode('fullpage');
+        $html2pdf->writeHTML($content);
+        $html2pdf->output("Informacion de la cita.pdf");
+        
+    }
 }

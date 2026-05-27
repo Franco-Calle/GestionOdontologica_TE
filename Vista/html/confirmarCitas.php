@@ -9,7 +9,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
               <title>Sistema de Gestion Odontologica</title>
 
-        <link rel="stylesheet" type="text/css" href="Vista/css/estilos.css"
+        <link rel="stylesheet" type="text/css" href="Vista/css/estilos.css">
+        <link rel="stylesheet" href="Vista/jquery/dialog/jquery-ui.css">
+        <link rel="stylesheet" href="Vista/jquery/dialog/jquery-ui.structure.css">
+        <link rel="stylesheet" href="Vista/jquery/dialog/jquery-ui.theme.css">
+        <script type="text/javascript" src="Vista/jquery/jquery-3.7.1.min.js"></script>
+        <script src="Vista/jquery/dialog/jquery-ui.js"></script>
+        <script type="text/javascript" src="Vista/js/script.js"></script>
     </head>
     <body>
         <div id="contenedor">
@@ -33,7 +39,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </tr>
                     <tr>
                         <td>Nombre</td>
-                        <td><?php echo $fila->PacNombres . "" . $fila->PacApellidos; ?></td>
+                        <td><?php echo $fila->PacNombres . " " . $fila->PacApellidos; ?></td>
                     </tr>
                     <tr><th colspan="2">Datos del Médico</th></tr>
                     <tr>
@@ -42,7 +48,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </tr>
                     <tr>
                         <td>Nombre</td>
-                        <td><?php echo $fila->MedNombres . "" . $fila->MedApellidos; ?></td>
+                        <td><?php echo $fila->MedNombres . " " . $fila->MedApellidos; ?></td>
                     </tr>
                     <tr><th colspan="2">Datos de la Cita</th></tr>
                     <tr>
@@ -73,6 +79,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <td>Observaciones</td>
                         <td><?php echo $fila->CitObservaciones; ?></td>
                     </tr>
+                    <tr><td colspan="2">
+                            <a href="index.php?accion=reporte&numero=<?php echo $fila->CitNumero; ?>" target="blank">
+                                Generar Reporte
+                            </a>
+                    </td></tr>
                 </table>
             </div>
         </div>

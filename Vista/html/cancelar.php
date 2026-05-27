@@ -9,7 +9,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
               <title>Sistema de Gestion Odontologica</title>
 
-        <link rel="stylesheet" type="text/css" href="Vista/css/estilos.css"
+              <link rel="stylesheet" type="text/css" href="Vista/css/estilos.css">
+        <link rel="stylesheet" href="Vista/jquery/dialog/jquery-ui.css">
+        <link rel="stylesheet" href="Vista/jquery/dialog/jquery-ui.structure.css">
+        <link rel="stylesheet" href="Vista/jquery/dialog/jquery-ui.theme.css">
+        <script type="text/javascript" src="Vista/jquery/jquery-3.7.1.min.js"></script>
+        <script src="Vista/jquery/dialog/jquery-ui.js"></script>
+        <script type="text/javascript" src="Vista/js/script.js"></script>
     </head>
     <body>
         <div id="contenedor">
@@ -32,7 +38,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <input type="submit" name="cancelarConsultar" value="Consultar" id="cancelarConsultar"/>
+                                <input type="button" value="Consultar" onclick="cancelarCita()" id="cancelarConsultar"/>
                             </td>
                         </tr>
                         <tr><td colspan="2"><div id="paciente3"></div></td></tr>

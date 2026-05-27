@@ -8,9 +8,9 @@ if ($result->num_rows > 0) {
             ?>
             <tr>
                 <td><?php echo $fila->CitNumero; ?></td>
-                <td><?php echo $fila->CitFecha ?></td>
-                <td><?php echo $fila->CitHora ?></td>
-                <td>Cancelar</td>
+                <td><?php echo $fila->CitFecha; ?></td>
+                <td><?php echo $fila->CitHora; ?></td>
+                <td><a href="javascript:void(0);" onclick="confirmarCancelar(<?php echo $fila->CitNumero; ?>)">Cancelar</a></td>
             </tr>
             <?php
         }
