@@ -18,7 +18,7 @@ class Paciente {
     private $fechaNacimiento;
     private $sexo;
 
-    public function _construct($ide, $nom, $ape, $fNa, $sex) {
+    public function __construct($ide, $nom, $ape, $fNa, $sex) {
         $this->identificacion = $ide;
         $this->nombres = $nom;
         $this->apellidos = $ape;

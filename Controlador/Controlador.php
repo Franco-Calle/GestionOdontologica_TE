@@ -36,11 +36,11 @@ class Controlador {
         $result = $gestorCita->consultarPaciente($doc);
         require_once"Vista/html/consultarPaciente.php";
     }
-    public function agregarPaciente($doc, $nom, $ape, $fec, $sex){
-        $paciente = new Paciente($doc, $nom, $ape, $fec, $sex);
+    public function agregarPaciente($ide, $nom, $ape, $fNa, $sex){
+        $paciente = new Paciente($ide, $nom, $ape, $fNa, $sex);
         $gestorCita = new GestorCita();
         $result = $gestorCita->agregarPaciente($paciente);
-        if($registros > 0){
+        if($result > 0){
             echo "Paciente Insertado con Exito";
         }
         else{

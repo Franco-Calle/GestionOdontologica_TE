@@ -73,13 +73,13 @@ WHERE PacIdentificacion = '$doc'";
     public function agregarPaciente(Paciente $paciente) {
         $conexion = new Conexion();
         $conexion->abrir();
-        $identificacion = $paciente->obtenerldentificacion();
-        $nombres = $paciente->obtenerNombres();
-        $apellidos = $paciente->obtenerApellidos();
-        $fecha = $paciente->obtenerFechaNacimiento();
-        $sexo = $paciente->obtenerSexo();
-        $sql = "INSERT INTO pacientes VALUES ('$identificacion', 'Snombres', 'Sapellidos',
-'$fecha', '$sexo')";
+        $ide  = $paciente->obtenerldentificacion();
+        $nom = $paciente->obtenerNombres();
+        $ape = $paciente->obtenerApellidos();
+        $fNa = $paciente->obtenerFechaNacimiento();
+        $sex = $paciente->obtenerSexo();
+        $sql = "INSERT INTO pacientes VALUES ('$ide ', '$nom', '$ape',
+'$fNa', '$sex')";
         $conexion->consulta($sql);
         $fillasAfectadas = $conexion->obtenerFilasAfectadas();
         $conexion->cerrar();

@@ -111,7 +111,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <tr>
                         <td>Sexo</td>
                         <td>
-                            <select id="pac Sexo" name="pacSexo">
+                            <select id="pacSexo" name="pacSexo">
                                 <option value="-1" selected="selected">---Seleccione Sexo---</option>
                                 <option>m</option>
                                 <option>f</option>
